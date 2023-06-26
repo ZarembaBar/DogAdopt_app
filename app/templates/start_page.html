@@ -20,24 +20,14 @@
 <div align="center" class="pure-menu pure-menu-scrollable custom-restricted" style="width:800px; margin:0 auto;">
     <a>Menu</a><br><br><br><br>
     <ul class="pure-menu-list">
-        <li class="pure-menu-item">
-            <a href="/user/create_account">Dodaj konto użytkownika</a><br><br>
-        </li>
+        {% if current_user.is_anonymous %}
         <li class="pure-menu-item">
             <a href="{{ url_for('login') }}">Zaloguj się jako użytkownik</a><br><br>
         </li>
+        {% else %}
         <li class="pure-menu-item">
-            <a href="/dog/list_display">Wyświetl listę psów do adopcji</a><br><br>
+            <a href="{{ url_for('logout') }}">Wyloguj użytkownika {{ current_user.username }}</a><br><br>
         </li>
-    </ul>
-    <hr>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li><b>{{ message }}</b></li>
-            {% endfor %}
-        </ul>
         {% endif %}
-        {% endwith %}
+    </ul>
 </div>
