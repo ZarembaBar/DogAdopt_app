@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+        <h1 align="center">DogAdopt Menu</h1>
+    </head>
+</html>
+<style>
+    /* Customization to limit height of the menu */
+    .custom-restricted    {
+        text-align: center;
+        height: 350px;
+        width: 300px;
+        border: 5px solid black;
+        border-radius: 4px;
+    }
+</style>
+<div align="center" class="pure-menu pure-menu-scrollable custom-restricted" style="width:800px; margin:0 auto;">
+    <a>Menu</a><br><br><br><br>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item">
+            <a href="/user/create_account">Dodaj konto użytkownika</a><br><br>
+        </li>
+        <li class="pure-menu-item">
+            <a href="{{ url_for('login') }}">Zaloguj się jako użytkownik</a><br><br>
+        </li>
+        <li class="pure-menu-item">
+            <a href="/dog/list_display">Wyświetl listę psów do adopcji</a><br><br>
+        </li>
+    </ul>
+    <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li><b>{{ message }}</b></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+</div>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Logowanie do konta</title>
+</head>
+    <h1>Wpisz dane logowanie</h1>
+<body>
+    <form action="" method="post">
+        {{ login_form.hidden_tag() }}
+        <p>
+            {{ login_form.username.label }}<br>
+            {{ login_form.username(size=30) }}
+        </p>
+        <p>
+            {{ login_form.password.label }}<br>
+            {{ login_form.password(size=30) }}
+        </p>
+        <p>
+            {{ login_form.submit() }}
+        </p>
+    </form>
+</body>
+</html>
