@@ -15,7 +15,6 @@ class User(UserMixin, db.Model):
     user_surname = db.Column(db.String(50), index=True)
     user_email = db.Column(db.String(50), index=True, unique=True)
     user_password_hash = db.Column(db.String(150))
-    dogs = db.relationship('Dog', backref='owner')
 
     def __repr__(self):
         return '<Użytkownik {}>'.format(self.user_name)
@@ -34,7 +33,8 @@ class Dog(db.Model):
     breed = db.Column(db.String(50))
     location = db.Column(db.String(50))
     description = db.Column(db.Text)
-    owner = db.Column(db.Integer, db.ForeignKey('users_table.id'))
+    owner_id = db.Column(db.Integer, db.ForeignKey('users_table.id'))
+    owner = db.relationship('User')
 
 
     def __repr__(self):

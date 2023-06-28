@@ -43,10 +43,17 @@ def register():
         return redirect(url_for('index'))
     new_user_form = NewUserForm()
     if new_user_form.validate_on_submit():
-        user = User(user_name=new_user_form.user_name.data, user_surname=new_user_form.user_surname.data, user_email=new_user_form.user_email.data)
+        user = User(user_name=new_user_form.user_name.data, user_surname=new_user_form.user_surname.data,
+                    user_email=new_user_form.user_email.data)
         user.set_password(new_user_form.user_password.data)
         db.session.add(user)
         db.session.commit()
         flash('Pomyślnie dodano nowego użytkownika')
         return redirect(url_for('login'))
     return render_template('register.html', new_user_form=new_user_form)
+
+
+@app.route('/user/<id>', methods=['GET', 'POST'])
+def user(id):
+    user = User.query.filter_by(id=id).first_or_404()
+    return render_template('user_account_display.html', user=user)
