@@ -20,13 +20,16 @@
 <div align="center" class="pure-menu pure-menu-scrollable custom-restricted" style="width:800px; margin:0 auto;">
     <a>Menu</a><br><br><br><br>
     <ul class="pure-menu-list">
+        <li class="pure-menu-item">
+            <a href="{{ url_for('register') }}">Załóż nowe konto użytkownika</a><br><br>
+        </li>
         {% if current_user.is_anonymous %}
         <li class="pure-menu-item">
             <a href="{{ url_for('login') }}">Zaloguj się jako użytkownik</a><br><br>
         </li>
         {% else %}
         <li class="pure-menu-item">
-            <a href="{{ url_for('logout') }}">Wyloguj użytkownika {{ current_user.username }}</a><br><br>
+            <a href="{{ url_for('logout') }}">Wyloguj użytkownika {{ current_user.user_name + " " + current_user.user_surname}}</a><br><br>
         </li>
         {% endif %}
     </ul>

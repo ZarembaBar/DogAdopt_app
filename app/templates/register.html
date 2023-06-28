@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Utwórz konto</title>
+</head>
+    <h1>Załóż konto użytkownika</h1>
+<body>
+    <form action="" method="post">
+        {{ new_user_form.hidden_tag() }}
+        <p>
+            {{ new_user_form.user_name.label }}<br>
+            {{ new_user_form.user_name(size=30) }}
+        </p>
+        <p>
+            {{ new_user_form.user_surname.label }}<br>
+            {{ new_user_form.user_surname(size=30) }}
+        </p>
+        <p>
+            {{ new_user_form.user_email.label }}<br>
+            {{ new_user_form.user_email(size=30) }}
+            {% for error in new_user_form.user_email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ new_user_form.user_password.label }}<br>
+            {{ new_user_form.user_password(size=30) }}
+        </p>
+        <p>
+            {{ new_user_form.user_password_2.label }}<br>
+            {{ new_user_form.user_password_2(size=30) }}
+            {% for error in new_user_form.user_password_2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ new_user_form.submit() }}
+        </p>
+    </form>
+</body>
+</html>

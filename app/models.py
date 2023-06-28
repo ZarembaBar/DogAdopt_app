@@ -7,21 +7,23 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def load_user(id):
     return User.query.get(int(id))
 
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users_table'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), index=True, unique=True)
-    email = db.Column(db.String(50), index=True, unique=True)
-    password_hash = db.Column(db.String(150))
+    user_name = db.Column(db.String(50), index=True)
+    user_surname = db.Column(db.String(50), index=True)
+    user_email = db.Column(db.String(50), index=True, unique=True)
+    user_password_hash = db.Column(db.String(150))
 
     def __repr__(self):
-        return '<Użytkownik {}>'.format(self.username)
+        return '<Użytkownik {}>'.format(self.user_name)
 
     def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.user_password_hash = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        return check_password_hash(self.user_password_hash, password)
 
 
 class Dog(db.Model):
