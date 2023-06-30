@@ -36,6 +36,5 @@ class Dog(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users_table.id'))
     owner = db.relationship('User')
 
-
     def __repr__(self):
         return '<Piesek {}>'.format(self.name)

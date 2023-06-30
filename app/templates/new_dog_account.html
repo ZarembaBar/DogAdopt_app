@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Utwórz konto</title>
+</head>
+    <h1>Załóż konto pieska</h1>
+<body>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=30) }}
+        </p>
+        <p>
+            {{ form.age.label }}<br>
+            {{ form.age(size=30) }}
+        </p>
+        <p>
+            {{ form.weight.label }}<br>
+            {{ form.weight }}
+        </p>
+        <p>
+            {{ form.breed.label }}<br>
+            {{ form.breed(size=30) }}
+        </p>
+        <p>
+            {{ form.location.label }}<br>
+            {{ form.location(size=30) }}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(size=50, maxlength=300) }}
+        </p>
+        <p>
+            {{ form.photo.label }}<br>
+            {{ form.photo(size=30) }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+</body>
+</html>
