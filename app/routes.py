@@ -1,3 +1,7 @@
+import os
+
+from werkzeug.utils import secure_filename
+
 from app import app, db
 from flask import render_template, flash, redirect, request, url_for
 from flask_login import current_user, login_required, logout_user, login_user
@@ -69,6 +73,12 @@ def create_dog_account():
                   location=form.location.data,
                   description=form.description.data,
                   owner_id=current_user.id)
+        print(form)
+        print(form.photo)
+        print(form.photo.data)
+        photo = form.photo.data
+        photo_name = secure_filename(photo.filename)
+        photo.save(os.path.join(app.config['UPLOAD_FOLDER'], photo_name))
         db.session.add(dog)
         db.session.commit()
         flash(f'Dodano konto psa {dog.name} do adopcji')

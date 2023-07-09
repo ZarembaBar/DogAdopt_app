@@ -7,3 +7,5 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://bartek:Bartek12345!@localhost' \
                                                                 '/dogadopt'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    UPLOAD_FOLDER = '/home/bartek/projects/DogAdopt/app/static/Images'

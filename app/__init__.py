@@ -11,4 +11,6 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
+# app.config['UPLOAD_FOLDER'] = '/home/bartek/projects/DogAdopt/app/static/Images'
+
 from app import routes, models
